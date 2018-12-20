@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.objects.NativeUint8Array;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -5,17 +7,74 @@ public class Main {
 
 
         int[] nums = new int[]{2, 1, 5, 6, 3, 4};
-        for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = 0; j < nums.length - i - 1; j++) {
-                if (nums[j] > nums[j + 1]) {
-                    swap(nums, j);
-                }
-            }
-        }
 
+//        bubbleSort(nums);
+
+//        selectionSort(nums);
+
+        insertSort(nums);
 
         printLog(nums);
     }
+
+
+    /**
+     * 直接插入排序
+     *
+     * @param nums
+     */
+    private static void insertSort(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            int key = nums[i];
+            int j = i - 1;
+
+            while (j >= 0 && nums[j] > key) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+
+            nums[j + 1] = key;
+        }
+    }
+
+
+    /**
+     * 冒泡排序
+     *
+     * @param nums
+     */
+    private static void bubbleSort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = 0; j < nums.length - i - 1; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * 选择排序
+     *
+     * @param nums
+     */
+    private static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+
+            for (int j = i + 1; j < nums.length; j++) {
+
+                if (nums[i] > nums[j]) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+        }
+    }
+
 
     private static void printLog(int[] nums) {
         StringBuilder sb = new StringBuilder();
@@ -27,12 +86,6 @@ public class Main {
         }
 
         System.out.println(sb);
-    }
-
-    private static void swap(int[] nums, int j) {
-        int temp = nums[j];
-        nums[j] = nums[j + 1];
-        nums[j + 1] = temp;
     }
 
 }
