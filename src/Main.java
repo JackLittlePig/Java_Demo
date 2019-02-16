@@ -2,6 +2,9 @@ import jdk.nashorn.internal.objects.NativeUint8Array;
 
 public class Main {
 
+    //https://www.cnblogs.com/morethink/p/8419151.html
+
+
     public static void main(String[] args) {
 //        IntStream.iterate(1, i -> i < 100, i -> i + 1).forEach(System.out::println);
 
@@ -12,9 +15,22 @@ public class Main {
 
 //        selectionSort(nums);
 
-        insertSort(nums);
+//        insertSort(nums);
+//
+//        printLog(nums);
 
-        printLog(nums);
+
+        heapSort();
+    }
+
+
+    /**
+     * 堆排序
+     */
+    private static void heapSort() {
+
+
+
     }
 
 
